@@ -1,0 +1,58 @@
+<div class="catalogo-proveedores-container">
+  <div class="catalogo-wrapper">
+    <div class="header-catalogo">
+      <h1 class="title-industrial">Catálogo de Proveedores</h1>
+      <p class="subtitulo">Registro y gestión de proveedores del taller</p>
+    </div>
+    
+    <div class="card-catalogo-proveedores">
+      @if(cargando()){
+        <div class="estado-container">
+          <div class="cargando-spinner"></div>
+          <p>Cargando proveedores...</p>
+        </div>
+      }
+      
+      @if(!cargando() && proveedores().length === 0){
+        <div class="estado-container">
+          <div class="icono-vacio"></div>
+          <h3>No hay proveedores registrados</h3>
+          <p>Agrega tu primer proveedor para comenzar</p>
+        </div>
+      }
+      
+      @if(!cargando() && proveedores().length > 0){
+        <table class="tabla-proveedores">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Marcas que surten</th>
+              <th>Tiempo de entrega</th>
+              <th>Ubicación</th>
+              <th>Contacto</th>
+              <th>Banco</th>
+              <th>Cuenta bancaria</th>
+              <th>CLABE interbancaria</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of proveedores(); track item.id){
+              <tr>
+                <td>{{item.id}}</td>
+                <td>{{item.nombre}}</td>
+                <td>{{item.marcas_surtidas}}</td>
+                <td>{{item.tiempo_entrega}}</td>
+                <td>{{item.ubicacion}}</td>
+                <td>{{item.contacto}}</td>
+                <td>{{item.banco}}</td>
+                <td>{{item.cuenta_bancaria}}</td>
+                <td>{{item.clabe_interbancaria || 'No especificado'}}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      }
+    </div>
+  </div>
+</div>

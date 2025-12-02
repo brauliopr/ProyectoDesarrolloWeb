@@ -1,0 +1,47 @@
+<div class="catalogo-container">
+  <div class="catalogo-wrapper">
+    <div class="header-catalogo">
+      <h1 class="title-industrial">Catálogo de Piezas</h1>
+      <p class="subtitulo">Inventario de repuestos y componentes</p>
+    </div>
+    
+    <div class="card-catalogo">
+      @if(cargando()){
+        <div class="estado-container">
+          <div cAlass="cargando-spinner"></div>
+          <p>Cargando datos del catálogo...</p>
+        </div>
+      }
+      
+      @if(!cargando() && piezas().length === 0){
+        <div class="estado-container">
+          <h3>No hay piezas registradas</h3>
+          <p>Agrega piezas al catálogo para comenzar</p>
+        </div>
+      }
+      
+      @if(!cargando() && piezas().length > 0){
+        <table class="tabla-industrial">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Número de Parte</th>
+              <th>Descripción</th>
+              <th>Cantidad</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of piezas(); track item.id){
+              <tr>
+                <td>{{item.id}}</td>
+                <td>{{item.numero_parte}}</td>
+                <td>{{item.descripcion}}</td>
+                <td>{{item.cantidad}}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      }
+    </div>
+  </div>
+</div>

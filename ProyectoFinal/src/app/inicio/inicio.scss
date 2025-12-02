@@ -1,0 +1,502 @@
+$cat-yellow: #FFC400;
+$cat-black: #000000;
+$cat-dark-gray: #333333;
+$cat-light-gray: #666666;
+$cat-white: #FFFFFF;
+$cat-red: #D32F2F;
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin card-shadow {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+@mixin input-focus {
+  border-color: $cat-yellow;
+  box-shadow: 0 0 0 0.2rem rgba(255, 196, 0, 0.25);
+  outline: none;
+}
+
+.taller-container {
+  @include flex-center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, $cat-black 0%, $cat-dark-gray 100%);
+  padding: 2rem 1rem;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 25% 25%, rgba(255, 196, 0, 0.1) 2px, transparent 2px),
+      radial-gradient(circle at 75% 75%, rgba(255, 196, 0, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px, 30px 30px;
+    background-position: 0 0, 25px 25px;
+    pointer-events: none;
+  }
+}
+
+.content-overlay {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.page-header {
+  text-align: center;
+  padding: 3rem 2rem;
+  margin-bottom: 3rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  @include card-shadow;
+  border: 2px solid $cat-yellow;
+  position: relative;
+  max-width: 1200px;
+  margin: 2rem auto;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: $cat-yellow;
+    border-radius: 50%;
+  }
+
+  &::before {
+    top: -10px;
+    left: -10px;
+  }
+
+  &::after {
+    bottom: -10px;
+    right: -10px;
+  }
+
+  h1 {
+    color: $cat-black;
+    font-size: 3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    position: relative;
+
+    span {
+      color: $cat-yellow;
+      font-weight: 800;
+    }
+  }
+
+  .subtitle {
+    color: $cat-light-gray;
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+  }
+
+  .logo-container {
+    @include flex-center;
+    
+    img {
+      max-width: 400px;
+      height: auto;
+      border: 3px solid $cat-yellow;
+      border-radius: 10px;
+      padding: 10px;
+      background: $cat-white;
+    }
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+h2 {
+  text-align: center;
+  color: $cat-white;
+  font-size: 2.5rem;
+  margin: 3rem 0 2rem;
+  position: relative;
+  padding-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: $cat-yellow;
+    border-radius: 2px;
+  }
+}
+
+.photo-carousel-section {
+  padding: 2rem;
+  border-radius: 12px;
+  margin: 3rem 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  @include card-shadow;
+  border: 2px solid $cat-yellow;
+  position: relative;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: $cat-yellow;
+    border-radius: 50%;
+  }
+
+  &::before {
+    top: -7px;
+    left: -7px;
+  }
+
+  &::after {
+    bottom: -7px;
+    right: -7px;
+  }
+
+  .carousel-container {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 10px;
+    border: 1px solid $cat-light-gray;
+  }
+
+  .carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .carousel-slide {
+    min-width: 100%;
+    position: relative;
+
+    img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+    }
+  }
+
+  .slide-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba($cat-black, 0.9), transparent);
+    padding: 2rem;
+
+    a {
+      color: $cat-yellow;
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+
+      &:hover {
+        color: $cat-white;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba($cat-black, 0.8);
+    color: $cat-yellow;
+    border: 2px solid $cat-yellow;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    @include flex-center;
+
+    &:hover {
+      background: $cat-yellow;
+      color: $cat-black;
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    &.prev {
+      left: 20px;
+    }
+
+    &.next {
+      right: 20px;
+    }
+  }
+
+  .carousel-indicators {
+    @include flex-center;
+    gap: 15px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    .indicator {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: rgba($cat-white, 0.5);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+
+      &:hover {
+        background: $cat-yellow;
+        transform: scale(1.2);
+      }
+
+      &.active {
+        background: $cat-yellow;
+        transform: scale(1.3);
+        border-color: $cat-white;
+      }
+    }
+  }
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.col-md-4 {
+  flex: 1;
+  min-width: 300px;
+  max-width: 400px;
+}
+
+.card {
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  @include card-shadow;
+  border: 2px solid $cat-yellow;
+  transition: all 0.3s ease;
+  position: relative;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: $cat-yellow;
+    border-radius: 50%;
+  }
+
+  &::before {
+    top: -6px;
+    left: -6px;
+  }
+
+  &::after {
+    bottom: -6px;
+    right: -6px;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  }
+
+  .card-image {
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+  }
+
+  .card-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 250px);
+  }
+
+  .card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: $cat-black;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .card-text {
+    flex-grow: 1;
+    color: $cat-light-gray;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .btn {
+    align-self: flex-start;
+    background: linear-gradient(135deg, $cat-yellow, darken($cat-yellow, 10%));
+    color: $cat-black;
+    border: none;
+    border-radius: 6px;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 196, 0, 0.4);
+      background: linear-gradient(135deg, lighten($cat-yellow, 5%), $cat-yellow);
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+      );
+      transition: left 0.5s ease;
+    }
+
+    &:hover::before {
+      left: 100%;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .taller-container {
+    padding: 1rem;
+  }
+
+  .page-header {
+    padding: 2rem 1rem;
+    margin: 1rem;
+
+    h1 {
+      font-size: 2.2rem;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+    }
+
+    .logo-container img {
+      max-width: 250px;
+    }
+  }
+
+  .photo-carousel-section {
+    padding: 1rem;
+    margin: 2rem 1rem;
+
+    .carousel-slide img {
+      height: 300px;
+    }
+
+    .slide-caption a {
+      font-size: 1.3rem;
+    }
+
+    .carousel-btn {
+      width: 45px;
+      height: 45px;
+      font-size: 1.5rem;
+    }
+  }
+
+  .row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .col-md-4 {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    margin: 2rem 1rem;
+  }
+
+  .card {
+    max-width: 100%;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-header,
+.photo-carousel-section,
+.card {
+  animation: slideIn 0.5s ease-out;
+}

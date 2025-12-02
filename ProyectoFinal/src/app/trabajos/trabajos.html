@@ -1,0 +1,96 @@
+<div class="trabajos-container">
+  <div class="trabajos-wrapper">
+    <div class="card-trabajo">
+      <h2 class="title-trabajo">Agregar Trabajo</h2>
+
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)" class="form-trabajo">
+
+        <!-- Cliente -->
+        <div class="mb-3 campo-icono campo-cliente">
+          <label class="form-label">Cliente</label>
+          <input type="text" class="form-control" name="cliente" required [(ngModel)]="model.cliente"
+                 #cliente="ngModel" placeholder="Nombre completo del cliente">
+
+          @if (cliente.invalid && cliente.touched) {
+          <div class="text-danger small">
+            El nombre del cliente es obligatorio
+          </div>
+          }
+        </div>
+
+        <!-- Descripción del Problema -->
+        <div class="mb-3">
+          <label class="form-label">Descripción del Problema</label>
+          <textarea class="form-control" rows="3" name="descripcion" required [(ngModel)]="model.descripcion"
+                    #descripcion="ngModel" placeholder="Describa detalladamente el problema a reparar..."></textarea>
+          
+          @if (descripcion.invalid && descripcion.touched) {
+          <div class="text-danger small">
+            La descripción del problema es obligatoria
+          </div>
+          }
+        </div>
+
+        <!-- Empleados Asignados -->
+        <div class="mb-3 campo-icono campo-empleados">
+          <label class="form-label">Empleados Asignados</label>
+          <input type="text" class="form-control" name="empleados_asignados" 
+                 [(ngModel)]="model.empleados_asignados" placeholder="Ej: Juan Pérez, María López">
+        </div>
+
+        <!-- Diagnóstico Inicial -->
+        <div class="mb-3 campo-icono campo-diagnostico">
+          <label class="form-label">Diagnóstico Inicial</label>
+          <textarea class="form-control" rows="2" name="diagnostico" 
+                    [(ngModel)]="model.diagnostico" placeholder="Observaciones preliminares del mecánico..."></textarea>
+        </div>
+
+        <!-- Información del Vehículo -->
+        <div class="campo-grupo mb-4">
+          <!-- Marca del Vehículo -->
+          <div class="mb-3">
+            <label class="form-label">Marca del Vehículo</label>
+            <input type="text" class="form-control" name="marca" required [(ngModel)]="model.marca"
+                   #marca="ngModel" placeholder="Ej: Caterpillar, Volvo, Komatsu">
+
+            @if (marca.invalid && marca.touched) {
+            <div class="text-danger small">
+              La marca es obligatoria
+            </div>
+            }
+          </div>
+
+          <!-- Modelo del Vehículo -->
+          <div class="mb-3">
+            <label class="form-label">Modelo del Vehículo</label>
+            <input type="text" class="form-control" name="modelo" required [(ngModel)]="model.modelo"
+                   #modelo="ngModel" placeholder="Ej: 330F, 950G, D6T">
+
+            @if (modelo.invalid && modelo.touched) {
+            <div class="text-danger small">
+              El modelo es obligatorio
+            </div>
+            }
+          </div>
+        </div>
+
+        <!-- Número de Serie -->
+        <div class="mb-4 campo-icono">
+          <label class="form-label">Número de Serie/VIN</label>
+          <input type="text" class="form-control" name="numero_serie" required [(ngModel)]="model.numero_serie"
+                 #numero_serie="ngModel" placeholder="Ej: 1HGCM82633A123456">
+
+          @if (numero_serie.invalid && numero_serie.touched) {
+          <div class="text-danger small">
+            El número de serie es obligatorio
+          </div>
+          }
+        </div>
+
+        <button type="submit" class="btn-trabajo" [disabled]="f.invalid">
+          Registrar Trabajo
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

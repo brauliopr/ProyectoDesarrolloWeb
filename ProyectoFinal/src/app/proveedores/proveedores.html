@@ -1,0 +1,98 @@
+<div class="taller-container">
+    <div class="card-industrial">
+        <h2 class="text-center mb-4 title-industrial">Agregar Proveedores</h2>
+
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)" class="form-industrial">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Nombre del proveedor *</label>
+                    <input type="text" class="form-control" name="nombre" required [(ngModel)]="model.nombre"
+                        #nombre="ngModel" placeholder="Ej: CoreMaqs S.A. de C.V.">
+
+                    @if (nombre.invalid && nombre.touched) {
+                    <div class="text-danger small">
+                        El nombre del proveedor es obligatorio
+                    </div>
+                    }
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Tiempo de entrega *</label>
+                    <input type="text" class="form-control" name="tiempo_entrega" required
+                        [(ngModel)]="model.tiempo_entrega" #tiempo_entrega="ngModel" placeholder="Ej: 3-5 días hábiles">
+
+                    @if (tiempo_entrega.invalid && tiempo_entrega.touched) {
+                    <div class="text-danger small">
+                        El tiempo de entrega es obligatorio
+                    </div>
+                    }
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Marcas que surten *</label>
+                <textarea class="form-control" rows="2" name="marcas_surtidas" required
+                    [(ngModel)]="model.marcas_surtidas" #marcas_surtidas="ngModel"
+                    placeholder="Ej: CAT, Komatsu, John Deere, Hitachi..."></textarea>
+
+                @if (marcas_surtidas.invalid && marcas_surtidas.touched) {
+                <div class="text-danger small">
+                    Las marcas son obligatorias
+                </div>
+                }
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Ubicación *</label>
+                <input type="text" class="form-control" name="ubicacion" required [(ngModel)]="model.ubicacion"
+                    #ubicacion="ngModel" placeholder="Ej: Av. Industrial #123, Ciudad, Estado">
+
+                @if (ubicacion.invalid && ubicacion.touched) {
+                <div class="text-danger small">
+                    La ubicación es obligatoria
+                </div>
+                }
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Contacto *</label>
+                <input type="text" class="form-control" name="contacto" required [(ngModel)]="model.contacto"
+                    #contacto="ngModel" placeholder="Ej: Juan Pérez - Tel: 55 1234 5678 - juan@correo.com">
+
+                @if (contacto.invalid && contacto.touched) {
+                <div class="text-danger small">
+                    El contacto es obligatorio
+                </div>
+                }
+            </div>
+
+            <div class="card-industrial-inner mb-4">
+                <h5 class="title-industrial-inner">Información Bancaria</h5>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Banco</label>
+                        <input type="text" class="form-control" name="banco" [(ngModel)]="model.banco"
+                            placeholder="Ej: Banamex, BBVA, Santander">
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Cuenta Bancaria</label>
+                        <input type="text" class="form-control" name="cuenta_bancaria"
+                            [(ngModel)]="model.cuenta_bancaria" placeholder="Número de cuenta">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">CLABE Interbancaria</label>
+                    <input type="text" class="form-control" name="clabe_interbancaria"
+                        [(ngModel)]="model.clabe_interbancaria" placeholder="18 dígitos" maxlength="18">
+                </div>
+            </div>
+
+            <button type="submit" class="btn-industrial" [disabled]="f.invalid">
+                Registrar Proveedor
+            </button>
+        </form>
+    </div>
+</div>

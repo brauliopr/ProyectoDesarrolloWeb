@@ -1,0 +1,45 @@
+<div class="taller-container">
+    <div class="card-industrial">
+        <h2 class="text-center mb-4 title-industrial">Agregar Piezas</h2>
+
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)" class="form-industrial">
+
+            <!-- Numero de Parte -->
+            <div class="mb-3">
+                <label class="form-label">Número de parte</label>
+                <input type="text" class="form-control" name="numero_parte" required [(ngModel)]="model.numero_parte"
+                    #numero_parte="ngModel" placeholder="Ej: CAT-12345-ABC">
+
+                @if (numero_parte.invalid && numero_parte.touched) {
+                <div class="text-danger small">
+                    Este campo es obligatorio
+                </div>
+                }
+            </div>
+
+            <!-- Descripcion -->
+            <div class="mb-3">
+                <label class="form-label">Descripción de la pieza</label>
+                <textarea class="form-control" rows="3" name="descripcion" [(ngModel)]="model.descripcion"
+                    placeholder="Descripción técnica, aplicación, notas..."></textarea>
+            </div>
+
+            <!-- Cantidad -->
+            <div class="mb-3">
+                <label class="form-label">Cantidad disponible</label>
+                <input type="number" class="form-control" name="cantidad" min="1" required
+                    [(ngModel)]="model.cantidad" #cantidad="ngModel" placeholder="0">
+
+                @if (cantidad.invalid && cantidad.touched) {
+                <div class="text-danger small">
+                    Debe ser al menos una pieza
+                </div>
+                }
+            </div>
+
+            <button type="submit" class="btn-industrial" [disabled]="f.invalid">
+                Agregar Pieza al Inventario
+            </button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <div class="container-fluid">
+
+    <h1 style="color: white;">Sistema de gestion del taller</h1>
+
+    <!-- Botón para móviles -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Menú de navegación -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto"> <!-- ms-auto empuja a la derecha -->
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/" routerLinkActive="active">Inicio</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Inventario</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/Inventario">Agregar Piezas</a></li>
+            <li><a class="dropdown-item" routerLink="/CatalogoPiezas">Consultar Inventario</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Trabajos</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/Trabajos">Agregar Trabajo</a></li>
+            <li><a class="dropdown-item" routerLink="/ConsultaTrabajos">Consultar Trabajos</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Proveedores</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/Proveedores">Proveedores</a></li>
+            <li><a class="dropdown-item" routerLink="/ConsultaProveedores">Consultar Proveedores</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main class="contenido">
+  <router-outlet></router-outlet>
+</main>

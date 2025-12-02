@@ -1,0 +1,99 @@
+<div class="black-background">
+  <div class="particles-container"></div>
+  <div class="light-effect"></div>
+  
+  <div class="content-overlay">
+    <div class="page-header">
+      <h1>Taller de <span>Maquinaria pesada</span></h1>
+      <p class="subtitle">Especialistas en maquinaria pesada y repuestos</p>
+      <div class="logo-container">
+        <img src="assets/img/logo.png" alt="Logo del taller">
+      </div>
+    </div>
+
+    <div class="container">
+      <h2>Trabajos en progreso</h2>
+      
+      <section class="photo-carousel-section">
+        <div class="carousel-container">
+          <div class="carousel">
+            <div class="carousel-slide active">
+              <img src="assets/img/Octavio.jpg" alt="Sr. Octavio">
+              <div class="slide-caption">
+                <a [routerLink]="'/Trabajos'">Moto 140G</a>
+              </div>
+            </div>
+            <div class="carousel-slide">
+              <img src="assets/img/Chatarrera.jpg" alt="Chatarrera">
+              <div class="slide-caption">
+                <a [routerLink]="'/Trabajos'">Motor Volvo</a>
+              </div>
+            </div>
+            <div class="carousel-slide">
+              <img src="assets/img/C15.jpg" alt="Allien">
+              <div class="slide-caption">
+                <a [routerLink]="'/Trabajos'">Caterpillar C15</a>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-btn prev" (click)="prevSlide()">‹</button>
+          <button class="carousel-btn next" (click)="nextSlide()">›</button>
+          <div class="carousel-indicators">
+            <span class="indicator active" (click)="goToSlide(0)"></span>
+            <span class="indicator" (click)="goToSlide(1)"></span>
+            <span class="indicator" (click)="goToSlide(2)"></span>
+          </div>
+        </div>
+      </section>
+      
+      <h2>Piezas en inventario con mayor uso</h2>
+      
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-image">
+              <img src="assets/img/filtro.jpg" alt="Filtros">
+            </div>
+            <div class="card-body">
+              <h4 class="card-title">Filtros</h4>
+              <p class="card-text">Filtros usados para aceites de motor, transmisión, hidráulica, combustible, etc.</p>
+              <a class="btn" [routerLink]="'/CatalogoPiezas'">
+                Ver más en el inventario
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-image">
+              <img src="assets/img/ctp.jpg" alt="Kits de sellos">
+            </div>
+            <div class="card-body">
+              <h4 class="card-title">Kits de sellos</h4>
+              <p class="card-text">Kits para la reparación de cilindros hidráulicos.</p>
+              <a class="btn" [routerLink]="'/CatalogoPiezas'">
+                Ver más en el inventario
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-image">
+              <img src="assets/img/arnes.jpg" alt="Arneses">
+            </div>
+            <div class="card-body">
+              <h4 class="card-title">Arneses</h4>
+              <p class="card-text">Conjuntos de cables usados para distintos módulos de máquinas.</p>
+              <a class="btn" [routerLink]="'/CatalogoPiezas'">
+                Ver más en el inventario
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

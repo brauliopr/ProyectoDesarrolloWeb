@@ -1,0 +1,258 @@
+$cat-yellow: #FFC400;
+$cat-black: #000000;
+$cat-dark-gray: #333333;
+$cat-light-gray: #666666;
+$cat-white: #FFFFFF;
+$cat-red: #D32F2F;
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin card-shadow {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+@mixin input-focus {
+  border-color: $cat-yellow;
+  box-shadow: 0 0 0 0.2rem rgba(255, 196, 0, 0.25);
+  outline: none;
+}
+
+.taller-container {
+  @include flex-center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, $cat-black 0%, $cat-dark-gray 100%);
+  padding: 2rem 1rem;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 25% 25%, rgba(255, 196, 0, 0.1) 2px, transparent 2px),
+      radial-gradient(circle at 75% 75%, rgba(255, 196, 0, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px, 30px 30px;
+    background-position: 0 0, 25px 25px;
+    pointer-events: none;
+  }
+}
+
+.card-industrial {
+  max-width: 500px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 2.5rem;
+  @include card-shadow;
+  border: 2px solid $cat-yellow;
+  position: relative;
+  z-index: 1;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: $cat-yellow;
+    border-radius: 50%;
+  }
+
+  &::before {
+    top: -10px;
+    left: -10px;
+  }
+
+  &::after {
+    bottom: -10px;
+    right: -10px;
+  }
+}
+
+.title-industrial {
+  color: $cat-black;
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 2rem;
+  text-align: center;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: $cat-yellow;
+    border-radius: 2px;
+  }
+}
+
+.form-industrial {
+  .mb-3 {
+    margin-bottom: 1.5rem !important;
+  }
+
+  .form-label {
+    color: $cat-black;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .form-control {
+    background: $cat-white;
+    border: 2px solid $cat-light-gray;
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    color: $cat-black;
+    transition: all 0.3s ease;
+    width: 100%;
+
+    &:focus {
+      @include input-focus;
+      background: lighten($cat-yellow, 45%);
+    }
+
+    &::placeholder {
+      color: lighten($cat-light-gray, 20%);
+    }
+
+    &[rows] {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    &[type="number"] {
+      &::-webkit-inner-spin-button,
+      &::-webkit-outer-spin-button {
+        opacity: 1;
+        background: $cat-yellow;
+        border-radius: 0 4px 4px 0;
+      }
+    }
+  }
+
+  .text-danger {
+    color: $cat-red !important;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-top: 0.25rem;
+    display: block;
+
+    &::before {
+      content: "⚠ ";
+      font-weight: bold;
+    }
+  }
+}
+
+.btn-industrial {
+  background: linear-gradient(135deg, $cat-yellow, darken($cat-yellow, 10%));
+  color: $cat-black;
+  border: none;
+  border-radius: 6px;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 196, 0, 0.4);
+    background: linear-gradient(135deg, lighten($cat-yellow, 5%), $cat-yellow);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    background: $cat-light-gray;
+    color: $cat-white;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    transition: left 0.5s ease;
+  }
+
+  &:hover:not(:disabled)::before {
+    left: 100%;
+  }
+}
+
+.ng-valid:not(form) {
+  border-color: #28a745 !important;
+}
+
+.ng-invalid:not(form).ng-touched {
+  border-color: $cat-red !important;
+}
+
+@media (max-width: 576px) {
+  .taller-container {
+    padding: 1rem;
+  }
+
+  .card-industrial {
+    padding: 2rem 1.5rem;
+    margin: 0 1rem;
+  }
+
+  .title-industrial {
+    font-size: 1.75rem;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card-industrial {
+  animation: slideIn 0.5s ease-out;
+}
